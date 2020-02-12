@@ -54,6 +54,13 @@ while True:
 # If the user enters a cardinal direction, attempt to move to the room there.
     if user_input == "n":
         player1.current_room = player1.current_room.n_to
+    elif user_input == "e":
+        player1.current_room = player1.current_room.e_to
+    elif user_input == "s":
+        player1.current_room = player1.current_room.s_to
+    elif user_input == "w":
+        player1.current_room = player1.current_room.w_to
+
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
