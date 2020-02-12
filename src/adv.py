@@ -40,10 +40,11 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 player1 = Player("Pere", room["outside"])
+gameOn = True
 # Write a loop that:
 #
 # print(player1.current_room.n_to, "<<<")
-while True:
+while gameOn:
     # * Prints the current room name
     print(f"You have entered {player1.current_room.name}")
 # * Prints the current description (the textwrap module might be useful here).
@@ -60,6 +61,9 @@ while True:
         player1.current_room = player1.current_room.s_to
     elif user_input == "w":
         player1.current_room = player1.current_room.w_to
+    elif user_input == "q":
+        gameOn = False
+        print("Thanks for playing. Bye.")
 
 # Print an error message if the movement isn't allowed.
 #
