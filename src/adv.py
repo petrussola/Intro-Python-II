@@ -64,6 +64,8 @@ while gameOn:
     elif user_input == "q":
         gameOn = False
         print("Thanks for playing. Bye.")
+    else:
+        print("Command not allowed. Please select an option to continue.")
 
 # Print an error message if the movement isn't allowed.
 #
