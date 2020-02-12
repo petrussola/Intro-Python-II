@@ -53,14 +53,32 @@ while gameOn:
 #
     user_input = input("Which direction do you want to go (n/e/s,w): ")
 # If the user enters a cardinal direction, attempt to move to the room there.
+
+
     if user_input == "n":
-        player1.current_room = player1.current_room.n_to
+        if not player1.current_room.n_to:
+            print("Direction is not allowed, please try again")
+            continue
+        else:
+            player1.current_room = player1.current_room.n_to
     elif user_input == "e":
-        player1.current_room = player1.current_room.e_to
+        if not player1.current_room.e_to:
+            print("Direction is not allowed, please try again")
+            continue
+        else:
+            player1.current_room = player1.current_room.e_to
     elif user_input == "s":
-        player1.current_room = player1.current_room.s_to
+        if not player1.current_room.s_to:
+            print("Direction is not allowed, please try again")
+            continue
+        else:
+            player1.current_room = player1.current_room.s_to
     elif user_input == "w":
-        player1.current_room = player1.current_room.w_to
+        if not player1.current_room.w_to:
+            print("Direction is not allowed, please try again")
+            continue
+        else:
+            player1.current_room = player1.current_room.w_to
     elif user_input == "q":
         gameOn = False
         print("Thanks for playing. Bye.")
@@ -70,3 +88,11 @@ while gameOn:
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+# Code to investigate later on:
+
+    # user_input += "_to"
+    # if getattr(player1.current_room, user_input):
+    #     player1.current_room = getattr(player1.current_room, user_input)
+    # else:
+    #     print("error")
