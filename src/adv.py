@@ -9,14 +9,14 @@ room = {
                      "North of you, the cave mount beckons", [Item('rock', 'Just a rock'), Item('key', 'A strange shape looking key')]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [Item('wallet', 'A wallet. Maybe there are EUR inside it?'), Item('shoe', 'A beautiful shoe')]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", [Item('umbrella', 'In case it rains'), Item('sunglasses', 'In case it is sunny')]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+to north. The smell of gold permeates the air.""", [Item('torch', 'Doesn\'t seem to have batteries'), Item('candle', 'A white one')]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
