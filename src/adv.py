@@ -1,11 +1,12 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", [Item('rock', 'Just a rock'), Item('key', 'A strange shape looking key')]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -45,12 +46,12 @@ directions = ['n', 'e', 's', 'w']
 # Write a loop that:
 #
 # print(player1.current_room.n_to, "<<<")
+print(player1.current_room)
 while gameOn:
     # * Prints the current room name
     # print(f"You have entered {player1.current_room.name}")
     # * Prints the current description (the textwrap module might be useful here).
     # print(player1.current_room.description)
-    print(player1.current_room)
 
     # * Waits for user input and decides what to do.
     user_input = input("Which direction do you want to go (n/e/s,w): ")
@@ -67,6 +68,7 @@ while gameOn:
             continue
         elif getattr(player1.current_room, user_input):
             player1.current_room = getattr(player1.current_room, user_input)
+            print(player1.current_room)
 
     # elif user_input == "n":
     #     if not player1.current_room.n_to:

@@ -2,7 +2,7 @@
 # description attributes.
 
 
-class Room:
+class Room():
     def __init__(self, name, description, list=[]):
         self.name = name
         self.description = description
@@ -21,5 +21,6 @@ class Room:
         else:
             output += f'There are the following items:\n'
             for item in self.list:
-                output += f'[{count_item}] {item.name} - {item.description}'
+                output += f'[{count_item}] {item.name} - {item.description}\n'
+                count_item += 1
         return output
