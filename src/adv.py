@@ -48,12 +48,20 @@ directions = ['n', 'e', 's', 'w']
 # print(player1.current_room.n_to, "<<<")
 print(player1.current_room)
 while gameOn:
-    # * Prints the current room name
-    # print(f"You have entered {player1.current_room.name}")
-    # * Prints the current description (the textwrap module might be useful here).
-    # print(player1.current_room.description)
+    # print items that the player has, for dev purposes
+    player_items = ''
+    player_items += f"Player {player1.name} has {len(player1.items)} items\n"
+    for item in player1.items:
+        player_items += f"{item.name}\n"
+    print(player_items)
 
-    # * Waits for user input and decides what to do.
+    # print how many items left in the room, for dev purposes
+    room_items = ''
+    room_items += f"Player {player1.current_room.name} has {len(player1.current_room.items)} items\n"
+    for item in player1.current_room.items:
+        room_items += f"{item.name}\n"
+    print(room_items)
+
     action_input = input("What do you want to do?\n").lower()
     clean_input = action_input.split()
     if clean_input[0] == 'q':
@@ -72,10 +80,13 @@ while gameOn:
                     player1.current_room, direction_input)
                 print(player1.current_room)
     elif clean_input[0] == "pick":
-        count_item = 1
+        # print(player1, "<<< player items")
+        # print(clean_input[1], "<<< object being picked")
+        # print(getattr(
+        #     player1.current_room.items["rock"], "description"), "<<< items in player class")
         for item in player1.current_room.items:
-            print(f'[{count_item}] - {item.name}. {item.description}')
-            count_item += 1
-        pick_input = input("Alright, which item do you wish to pick up?\n")
+            if item.name == clean_input[1]:
+                setattr(player1, "items", [*player1.items, item])
+                player1.current_room.items.remove(item)
     else:
         print("Sorry, did not understand that. Do you want to move or pick up an item?")
