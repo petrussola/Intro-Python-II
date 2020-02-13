@@ -48,18 +48,18 @@ def missing_input():
 
 while gameOn:
     # print items that the player has, for dev purposes
-    player_items = ''
-    player_items += f"Player {player1.name} has {len(player1.items)} items\n"
-    for item in player1.items:
-        player_items += f"{item.name}\n"
-    print(player_items)
+    # player_items = ''
+    # player_items += f"Player {player1.name} has {len(player1.items)} items\n"
+    # for item in player1.items:
+    #     player_items += f"{item.name}\n"
+    # print(player_items)
 
-    # print how many items left in the room, for dev purposes
-    room_items = ''
-    room_items += f"Player {player1.current_room.name} has {len(player1.current_room.items)} items\n"
-    for item in player1.current_room.items:
-        room_items += f"{item.name}\n"
-    print(room_items)
+    # # print how many items left in the room, for dev purposes
+    # room_items = ''
+    # room_items += f"Player {player1.current_room.name} has {len(player1.current_room.items)} items\n"
+    # for item in player1.current_room.items:
+    #     room_items += f"{item.name}\n"
+    # print(room_items)
 
     action_input = input("What do you want to do?\n").lower()
     clean_input = action_input.split()
@@ -91,9 +91,8 @@ while gameOn:
                 player1.current_room.items.remove(item)
                 # set found_item to True
                 found_item = True
-                # print message
-                print(f"Great, you have picked up the {clean_input[1]}!")
-                continue
+                # call on_take method and print message
+                item.on_take()
         # if found_item is False
         if not found_item:
             # print message
@@ -122,6 +121,8 @@ while gameOn:
                     player1.items.remove(item)
                     # set found item to True
                     found_item = True
+                    # call on_drop method to print message
+                    item.on_drop()
             # if we didn't find item in player's pocket
             if not found_item:
                 # print a message

@@ -3,5 +3,8 @@ class Item:
         self.name = name
         self.description = description
 
-    def __str__(self):
-        return 'hello'
+    def on_take(self):
+        print(f"You have picked up the {self.name} <<<<<<<<<<<<<<<<<<<<")
+    
+    def on_drop(self):
+        print(f"You have dropped up the {self.name} <<<<<<<<<<<<<<<<<<<<")
