@@ -47,14 +47,14 @@ directions = ['n', 'e', 's', 'w']
 # print(player1.current_room.n_to, "<<<")
 while gameOn:
     # * Prints the current room name
-    print(f"You have entered {player1.current_room.name}")
-# * Prints the current description (the textwrap module might be useful here).
-    print(player1.current_room.description)
-# * Waits for user input and decides what to do.
-#
-    # print(getattr(player1.current_room, "n_to"))
+    # print(f"You have entered {player1.current_room.name}")
+    # * Prints the current description (the textwrap module might be useful here).
+    # print(player1.current_room.description)
+    print(player1.current_room)
+
+    # * Waits for user input and decides what to do.
     user_input = input("Which direction do you want to go (n/e/s,w): ")
-# If the user enters a cardinal direction, attempt to move to the room there.
+    # If the user enters a cardinal direction, attempt to move to the room there.
     if user_input == 'q':
         print("Thanks for playing. Bye.")
         gameOn = False
