@@ -41,6 +41,7 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 player1 = Player("Pere", room["outside"])
 gameOn = True
+directions = ['n', 'e', 's', 'w']
 # Write a loop that:
 #
 # print(player1.current_room.n_to, "<<<")
@@ -51,39 +52,51 @@ while gameOn:
     print(player1.current_room.description)
 # * Waits for user input and decides what to do.
 #
+    # print(getattr(player1.current_room, "n_to"))
     user_input = input("Which direction do you want to go (n/e/s,w): ")
 # If the user enters a cardinal direction, attempt to move to the room there.
-
-
-    if user_input == "n":
-        if not player1.current_room.n_to:
-            print("Direction is not allowed, please try again")
-            continue
-        else:
-            player1.current_room = player1.current_room.n_to
-    elif user_input == "e":
-        if not player1.current_room.e_to:
-            print("Direction is not allowed, please try again")
-            continue
-        else:
-            player1.current_room = player1.current_room.e_to
-    elif user_input == "s":
-        if not player1.current_room.s_to:
-            print("Direction is not allowed, please try again")
-            continue
-        else:
-            player1.current_room = player1.current_room.s_to
-    elif user_input == "w":
-        if not player1.current_room.w_to:
-            print("Direction is not allowed, please try again")
-            continue
-        else:
-            player1.current_room = player1.current_room.w_to
-    elif user_input == "q":
-        gameOn = False
+    if user_input == 'q':
         print("Thanks for playing. Bye.")
+        gameOn = False
+    elif user_input not in directions:
+        print(">> Please select a valid direction")
     else:
-        print("Command not allowed. Please select an option to continue.")
+        user_input += "_to"
+        if not getattr(player1.current_room, user_input):
+            print(">> Wrong direction, please try again")
+            continue
+        elif getattr(player1.current_room, user_input):
+            player1.current_room = getattr(player1.current_room, user_input)
+
+    # elif user_input == "n":
+    #     if not player1.current_room.n_to:
+    #         print("Direction is not allowed, please try again")
+    #         continue
+    #     else:
+    #         player1.current_room = player1.current_room.n_to
+    # elif user_input == "e":
+    #     if not player1.current_room.e_to:
+    #         print("Direction is not allowed, please try again")
+    #         continue
+    #     else:
+    #         player1.current_room = player1.current_room.e_to
+    # elif user_input == "s":
+    #     if not player1.current_room.s_to:
+    #         print("Direction is not allowed, please try again")
+    #         continue
+    #     else:
+    #         player1.current_room = player1.current_room.s_to
+    # elif user_input == "w":
+    #     if not player1.current_room.w_to:
+    #         print("Direction is not allowed, please try again")
+    #         continue
+    #     else:
+    #         player1.current_room = player1.current_room.w_to
+    # elif user_input == "q":
+    #     gameOn = False
+    #     print("Thanks for playing. Bye.")
+    # else:
+    #     print("Command not allowed. Please select an option to continue.")
 
 # Print an error message if the movement isn't allowed.
 #
