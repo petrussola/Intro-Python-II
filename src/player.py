@@ -16,3 +16,8 @@ class Player:
             for item in self.items:
                 output += f'{item.name}\n'
             return output
+
+    def move(self, direction):
+        if hasattr(self.current_room, f"{direction}_to"):
+            setattr(self, "current_room", getattr(
+                self.current_room, f"{direction}_to"))
