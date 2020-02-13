@@ -54,22 +54,28 @@ while gameOn:
     # print(player1.current_room.description)
 
     # * Waits for user input and decides what to do.
-    action_input = input("Do you want to move or take an action? ").lower()
-    if action_input == 'move':
-        direction_input = input(
-            "Which direction do you want to go (n/e/s,w)?: ")
-        if direction_input == 'q':
-            print("Thanks for playing. Bye.")
-            gameOn = False
-        elif direction_input not in directions:
-            print("Please select a valid direction")
+    action_input = input("What do you want to do?\n").lower()
+    clean_input = action_input.split()
+    if clean_input[0] == 'q':
+        print("Thanks for playing. Bye.")
+        gameOn = False
+    elif clean_input[0] == 'move':
+        if len(clean_input) == 1 or clean_input[1] not in directions:
+            print("I didn't understand that. Please move n, e, s or w.")
         else:
-            direction_input += "_to"
+            direction_input = f"{clean_input[1]}_to"
             if getattr(player1.current_room, direction_input) == None:
                 print(
-                    f"There is no such direction as {direction_input}. Please try again")
-                continue
+                    f"You cannot move in such direction. Try another one")
             elif getattr(player1.current_room, direction_input):
                 player1.current_room = getattr(
                     player1.current_room, direction_input)
                 print(player1.current_room)
+    elif clean_input[0] == "pick":
+        count_item = 1
+        for item in player1.current_room.items:
+            print(f'[{count_item}] - {item.name}. {item.description}')
+            count_item += 1
+        pick_input = input("Alright, which item do you wish to pick up?\n")
+    else:
+        print("Sorry, did not understand that. Do you want to move or pick up an item?")
