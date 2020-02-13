@@ -24,3 +24,6 @@ class Room():
                 output += f'[{count_item}] {item.name} - {item.description}\n'
                 count_item += 1
         return output
+
+    def explain(self):
+        print(f"You are entering {self.name}.\n {self.description}")

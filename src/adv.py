@@ -70,14 +70,16 @@ while gameOn:
         if len(clean_input) == 1 or clean_input[1] not in directions:
             print("I didn't understand that. Please move n, e, s or w.")
         else:
-            direction_input = f"{clean_input[1]}_to"
-            if getattr(player1.current_room, direction_input) == None:
-                print(
-                    f"You cannot move in such direction. Try another one")
-            elif getattr(player1.current_room, direction_input):
-                player1.current_room = getattr(
-                    player1.current_room, direction_input)
-                print(player1.current_room)
+            # shiny new instance method that seems to work! :)
+            player1.move(clean_input[1])
+            # direction_input = f"{clean_input[1]}_to"
+            # if getattr(player1.current_room, direction_input) == None:
+            #     print(
+            #         f"You cannot move in such direction. Try another one")
+            # elif getattr(player1.current_room, direction_input):
+            #     player1.current_room = getattr(
+            #         player1.current_room, direction_input)
+            #     print(player1.current_room)
     elif clean_input[0] == "pick":
         # set up boolean variable that we will use to display message in case item is not found
         found_item = False

@@ -18,6 +18,9 @@ class Player:
             return output
 
     def move(self, direction):
-        if hasattr(self.current_room, f"{direction}_to"):
+        if getattr(self.current_room, f"{direction}_to") == None:
+            print(f"You cannot move in such direction. Try another one")
+        elif getattr(self.current_room, f"{direction}_to") != None:
             setattr(self, "current_room", getattr(
                 self.current_room, f"{direction}_to"))
+            self.current_room.explain()
