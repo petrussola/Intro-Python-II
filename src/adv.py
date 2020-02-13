@@ -62,7 +62,7 @@ while gameOn:
         print(">> Please select a valid direction")
     else:
         user_input += "_to"
-        if not getattr(player1.current_room, user_input):
+        if getattr(player1.current_room, user_input) == None:
             print(">> Wrong direction, please try again")
             continue
         elif getattr(player1.current_room, user_input):
